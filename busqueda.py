@@ -20,13 +20,13 @@ def get_page(aniurl, return_soup = False):
     page = requests.get(aniurl)
     #la ordenamos
     soup = bs(page.content, 'html.parser')
-    if retur_soup:
+    if return_soup:
         return soup
     else:
         # separamos cada linea en elementos de una lista
         page = str(soup).split("\n")
 
-        return pagee
+        return page
 
 # Buscador de palabras ________________________________________________________
 
