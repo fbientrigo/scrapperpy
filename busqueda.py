@@ -6,7 +6,7 @@ import requests                 # Para obtener datos de la pagina _____
 from bs4 import BeautifulSoup as bs
 
 # Descargar la pagina web ______________________________________________________
-def get_page(aniurl, return_soup = False):
+def get_page(aniurl, return_soup = False, as_list = True):
     """
     Utilzamos beautiful soup y request para obtener la url y obtener la pagina
     como texto separado por linea dentro de una lista, esta funcion devuelve una
@@ -24,9 +24,11 @@ def get_page(aniurl, return_soup = False):
         return soup
     else:
         # separamos cada linea en elementos de una lista
-        page = str(soup).split("\n")
-
-        return page
+        page = str(soup)
+        if as_list:
+            return page.split("\n")
+        else:
+            return page
 
 # Buscador de palabras ________________________________________________________
 
@@ -34,6 +36,8 @@ def get_page(aniurl, return_soup = False):
 def grep(texto, buscar, imprimir = False, counter = 0, sep = False):
     """
     #Comparador de Lineas
+    notese que el objeto texto es una lista, de hallar un elemento
+    retornara el elemento lista que coincida
     ingrese string en el texto y buscar, en caso de que el texto contenga la palabra
     que reemplazo por buscar, se imprimira la linea donde aparecio
 
