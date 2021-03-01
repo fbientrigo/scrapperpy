@@ -20,7 +20,7 @@ def get_page(aniurl, return_soup = False):
     page = requests.get(aniurl)
     #la ordenamos
     soup = bs(page.content, 'html.parser')
-    if soup:
+    if retur_soup:
         return soup
     else:
         # separamos cada linea en elementos de una lista
