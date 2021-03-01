@@ -57,6 +57,6 @@ def grep(texto, buscar, imprimir = False, counter = 0, sep = False):
                     print(linea)
                 else:
                     return linea
-           counter = counter - 1 # de haber visto un match, restamos uno al counter
+            counter = counter - 1 # de haber visto un match, restamos uno al counter
                 #de manera que el siguiente pueda caer con counter 0 y ser ejecutado
             print(linea)
