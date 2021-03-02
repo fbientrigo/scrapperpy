@@ -4,6 +4,7 @@
 
 import requests                 # Para obtener datos de la pagina _____
 from bs4 import BeautifulSoup as bs
+import re
 
 # Descargar la pagina web ______________________________________________________
 def get_page(aniurl, return_soup = False, as_list = True):
@@ -64,3 +65,31 @@ def grep(texto, buscar, imprimir = False, counter = 0, sep = False):
             counter = counter - 1 # de haber visto un match, restamos uno al counter
                 #de manera que el siguiente pueda caer con counter 0 y ser ejecutado
             print(linea)
+
+#Uso de RegularExpression
+# llamadas expresiones regulares, puedes investigar sobre como usarlas aqui:
+# 
+def regrep(patron, texto):
+    """
+    Return the Expression Found (return the grep)
+    Toma el texto como una lista, la cual representara una linea
+    luego retorna una lista de todos los matches realizados, no de las lineas que contienen     estos matches
+    """
+    nfound = []
+    for line in texto:
+        ff = re.findall(r".\d-\d.",line)
+        if ff != []:
+            nfound.append(ff)
+    return nfound
+
+def linegrep(patron, texto):
+    """
+    Line of Expression Found (line of grep)
+    Toma el texto como una lista, la cual representara una linea
+    luego retorna una lista de todos las lineas que contienen un match
+    """
+    found = []
+    for line in texto:
+        ff = re.search(patron,line)
+        if ff != None:
+            found.append(ff.string)
