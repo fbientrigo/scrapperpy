@@ -9,3 +9,5 @@ Es necesario poseer ipykernel para esto (JupyterNotebook), el proposito del note
 Al correr el codigo obtienes una lista de links que puedes utilizar para descargar uno a uno o utilizar JDownloader para descargar de a varios.
 Puedes encontrar instrucciones mas detalladas en el siguiente video de YouTube:
 
+* Jupyter Notebook
+* JDownloader

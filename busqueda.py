@@ -44,6 +44,7 @@ def grep(texto, buscar, imprimir = False, counter = 0, sep = False):
 
     >> grep("hola \\n como estas","estas") -> "como estas"
 
+
     la opcion counter se saltara tantos matches
 
     >> grep("hola caracola \\n hola tu","estas", counter = 0) -> "hola caracola"
