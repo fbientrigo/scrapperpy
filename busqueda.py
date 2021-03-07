@@ -94,3 +94,46 @@ def linegrep(patron, texto):
         ff = re.search(patron,line)
         if ff != None:
             found.append(ff.string)
+
+# Animeflv
+
+# Para descargar de servidores ____________________________________________________________
+def obtlinkser(url0, server = "zippy", debug= False, counter = 0):
+    animesopa = get_page(url0,True) #descargamos la pagina como        una sopa
+    #buscamos las referencias a links en la pagina:
+    hrefs= []
+    for a in animesopa.find_all('a', href=True):
+        if debug:
+            print("Found the URL:", a['href'])
+        hrefs.append(a['href'])
+    if debug:
+        print(hrefs)
+
+    animesopa = list(map(str, hrefs))
+
+    if debug:
+        print(animesopa) #sigue todo desordenado aqui
+
+    # Pescamos el servidor
+    link = grep(animesopa, server,counter = counter)
+    if debug:
+        print(link)
+        print("Se obtuvo el link del servidor, hasta ahora todo bien")
+    
+    return link
+    
+#Esto es para loopear entre una lista de capitulos y obtener el link final
+def loopearS(caps, server = "MEGA",debug=False, counter = 0):
+    """
+    Loopea atravez de los links de servidor buscado con grep
+    """
+    link = []
+    for c in caps:
+        if debug:
+            print("Obteniendo link de Server___________ cap: ",c)
+        linko = obtlinkser(c,server,debug, counter = counter)
+        link.append(linko)
+        if debug:
+            print("Link agregado: ", linko)
+            print("_______________________")
+    return link
